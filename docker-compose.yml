@@ -17,6 +17,7 @@ services:
       - PGDATABASE=$PGDATABASE
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
+      - NODE_ENV=production
   worker:
     image: 'rallycoding/multi-worker'
     mem_limit: 128m
@@ -24,6 +25,7 @@ services:
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
+      - NODE_ENV=production
   nginx:
     image: 'rallycoding/multi-nginx'
     mem_limit: 128m
