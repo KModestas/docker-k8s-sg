@@ -1,6 +1,6 @@
 version: '3'
 services:
-  # for production, we are using the images we pushed to Docker Hub during deployment
+  # when deploying for production, we are using the images that our CI server pushed to Docker Hub
   client:
     image: 'rallycoding/multi-client'
     mem_limit: 128m
