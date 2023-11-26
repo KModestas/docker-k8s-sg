@@ -1,0 +1,39 @@
+apiVersion: skaffold/v2beta12
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./k8s/* # where to find your config files
+build:
+  local:
+    push: false # will not push images to Dockerhub after building them
+  artifacts:
+    # for each image in your deployments, tell skaffold to build them locally instead of pulling them from DockerHub:
+    - image: rallycoding/client-skaffold  # name must match up to each image in each depl file 
+      context: client  # the directory containing the DockerFile
+      docker: 
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: "src/**/*.js" # automatically syncs all js files from your local src directory
+            dest: . #  destination in the container where the files will be synced (in this case the workdir)
+          - src: "src/**/*.css"
+            dest: .
+          - src: "src/**/*.html"
+            dest: .
+    - image: rallycoding/worker-skaffold
+      context: worker
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+    - image: rallycoding/server-skaffold
+      context: server
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
