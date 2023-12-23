@@ -12,3 +12,4 @@ Start **Docker Desktop**
 
 2. Navigate to **localhost:80**
 
+_**kubectl get ingress** if you forget the entry url_
