@@ -1,7 +1,14 @@
-# docker-sg
+Start **Docker Desktop**
 
-1. run all of your containers locally from the root directory:
-**docker compose -f docker-compose-dev.yml up**
+# Run with Docker:
 
-2. then navigate to 
-**localhost:3050**
+1. **docker compose -f docker-compose-dev.yaml up**
+
+2. Navigate to **localhost:3050**
+
+# Run with Kubernetes:
+
+1. **skaffold dev**
+
+2. Navigate to **localhost:80**
+
